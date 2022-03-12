@@ -2,8 +2,8 @@ import java.util.Random;
 public class Prey extends Animal {
   // static random object for breeding
   // and static int representing mutation strength;
-  static Random geneWizard = new Random();
-  static int geneticVariation = 5;
+  static Random GENE_WIZARD = new Random();
+  static int GENETIC_VARIATION = 5;
   
   // prey needs to have an amount of meat it drops on kill
   int meatAmount;
@@ -21,8 +21,8 @@ public class Prey extends Animal {
 
   // helper method for breeding two stats
   public int breedStat(int a, int b) {
-    int newStat = geneWizard.nextInt(a, b);
-    newStat += geneWizard.nextInt(geneticVariation, geneticVariation * -1);
+    int newStat = a + GENE_WIZARD.nextInt(b - a);
+    newStat += -5 + GENE_WIZARD.nextInt(2 * GENETIC_VARIATION + 1); 
     return newStat;
   }
 

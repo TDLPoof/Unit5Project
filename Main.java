@@ -1,14 +1,15 @@
 import java.util.Random;
 import java.util.Arrays;
+
 class Main {
   static Random random = new Random();
 
   // hardcoded because the initial seed of the population does not need to be changed
   public static Prey generatePrey() {
-    int atk = random.nextInt(10, 25);
-    int nrg = random.nextInt(50, 75);
-    int spd = random.nextInt(10, 25);
-    int mmt = random.nextInt(10, 25);
+    int atk = 10 + random.nextInt(15);
+    int nrg = 50 + random.nextInt(25);
+    int spd = 10 + random.nextInt(15);
+    int mmt = 10 + random.nextInt(15);
     return new Prey(atk, nrg, spd, mmt);
   }
   public static void main(String[] args) {
