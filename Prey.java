@@ -13,7 +13,7 @@ public class Prey extends Animal {
     super(a, e, s);
     meatAmount = m;
   }
-
+  
   // accessor for meat amount
   public int getMeatAmount() {
     return meatAmount;

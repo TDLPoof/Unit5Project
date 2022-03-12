@@ -17,9 +17,14 @@ public class Animal {
   }
 
   public int getEnergy() {
-    return defense;
+    return energy;
   }
   public int getSpeed() {
     return speed;
+  }
+
+  // modifier method for losing health
+  public void takeDamage (int amt) {
+    energy -= amt;
   }
 }

@@ -64,7 +64,20 @@ public class Predator extends Animal {
     }
     // keep the fight going until one entity dies
     while (target.getEnergy() > 0 && energy > 0) {
-      
+      // if enemy is faster, they attack first
+      // otherwise you attack first
+      if (speed < target.getSpeed()) {
+        takeDamage(target.getAttack());
+        if (energy <= 0) break;
+        target.takeDamage(attack);
+        if (target.getEnergy() <= 0) break;
+      }
+      else {
+        target.takeDamage(attack);
+        if (target.getEnergy() <= 0) break;
+        takeDamage(target.getAttack());
+        if (energy <= 0) break;
+      }
     }
     if (energy <= 0) { // clause in which player dies
       System.out.println("You died.");
