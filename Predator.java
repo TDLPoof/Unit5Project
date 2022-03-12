@@ -20,6 +20,7 @@ public class Predator extends Animal {
     maxEnergy = e;
     daysAlive = 0;
     huntsPerDay = hpd;
+    huntsLeft = huntsPerDay;
   }
 
   // accessor methods
@@ -81,14 +82,19 @@ public class Predator extends Animal {
     }
     if (energy <= 0) { // clause in which player dies
       System.out.println("You died.");
-      System.out.println("You surived " + daysAlive + " days.");
+      System.out.print("You surived " + daysAlive + " days, ");
+      System.out.print("fighting " + (huntsPerDay - huntsLeft - 1) + " times ");
+      System.out.println("on your last day.");
       return;
     }
     // clause in which prey dies
     System.out.println("Hunt successful!");
     huntsLeft--;
+    meatEatenToday += target.getMeatAmount();
+    energy += target.getMeatAmount() / 2;
     System.out.print("Meat quota: ");
     System.out.println("" + meatEatenToday + " / " + meatQuota);
     System.out.println("Energy: " + energy + " / " + maxEnergy);
+    System.out.println();
  }
 }
