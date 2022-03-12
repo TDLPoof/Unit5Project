@@ -16,8 +16,8 @@ class Main {
     Predator player = new Predator(25, 100, 50, 60, 5);
     Prey prey;
     for (int i = 0; i < 5; i++) {
-      if (player.getEnergy() <= 0) break;
-      // take this out later, just testing to see if quota mechanics work
+      if (player.getHealth() <= 0) break;
+      // TODO: take this out later, just testing to see if quota mechanics work
       if (player.getMeatEatenToday() >= player.getMeatQuota()) {
         System.out.println("You feel full and do not need to eat.\n");
         continue;
@@ -25,7 +25,7 @@ class Main {
       prey = generatePrey();
       player.fightPrey(prey);
     }
-    if (player.getMeatEatenToday() < player.getMeatQuota() && player.getEnergy() > 0) {
+    if (player.getMeatEatenToday() < player.getMeatQuota() && player.getHealth() > 0) {
       System.out.println("u ded");
     }
   }

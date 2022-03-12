@@ -7,17 +7,17 @@ public class Predator extends Animal {
   // and how many it can do
   int meatQuota;
   int meatEatenToday;
-  int maxEnergy;
+  int maxHealth;
   int daysAlive;
   int huntsPerDay;
   int huntsLeft;
 
   // constructor (using super for shorthand)
-  public Predator(int a, int e, int s, int mq, int hpd) {
-    super (a, e, s);
+  public Predator(int a, int h, int s, int mq, int hpd) {
+    super (a, h, s);
     meatQuota = mq;
     meatEatenToday = 0;
-    maxEnergy = e;
+    maxHealth = h;
     daysAlive = 0;
     huntsPerDay = hpd;
     huntsLeft = huntsPerDay;
@@ -32,8 +32,8 @@ public class Predator extends Animal {
     return meatEatenToday;
   }
 
-  public int getMaxEnergy() {
-    return maxEnergy;
+  public int getMaxHealth() {
+    return maxHealth;
   }
 
   public int getHuntsLeft() {
@@ -50,7 +50,7 @@ public class Predator extends Animal {
 
   // misc method for resetting things daily
   public void newDay() {
-    energy = maxEnergy;
+    health = maxHealth;
     meatEatenToday = 0;
     huntsLeft = huntsPerDay;
     daysAlive++;
@@ -64,23 +64,23 @@ public class Predator extends Animal {
       return;
     }
     // keep the fight going until one entity dies
-    while (target.getEnergy() > 0 && energy > 0) {
+    while (target.getHealth() > 0 && health > 0) {
       // if enemy is faster, they attack first
       // otherwise you attack first
       if (speed < target.getSpeed()) {
         takeDamage(target.getAttack());
-        if (energy <= 0) break;
+        if (health <= 0) break;
         target.takeDamage(attack);
-        if (target.getEnergy() <= 0) break;
+        if (target.getHealth() <= 0) break;
       }
       else {
         target.takeDamage(attack);
-        if (target.getEnergy() <= 0) break;
+        if (target.getHealth() <= 0) break;
         takeDamage(target.getAttack());
-        if (energy <= 0) break;
+        if (health <= 0) break;
       }
     }
-    if (energy <= 0) { // clause in which player dies
+    if (health <= 0) { // clause in which player dies
       System.out.println("You died.");
       System.out.print("You surived " + daysAlive + " days, ");
       System.out.print("fighting " + (huntsPerDay - huntsLeft - 1) + " times ");
@@ -91,10 +91,10 @@ public class Predator extends Animal {
     System.out.println("Hunt successful!");
     huntsLeft--;
     meatEatenToday += target.getMeatAmount();
-    energy += target.getMeatAmount() / 2;
+    health += target.getMeatAmount() / 2;
     System.out.print("Meat quota: ");
     System.out.println("" + meatEatenToday + " / " + meatQuota);
-    System.out.println("Energy: " + energy + " / " + maxEnergy);
+    System.out.println("Energy: " + health + " / " + maxHealth);
     System.out.println();
  }
 }

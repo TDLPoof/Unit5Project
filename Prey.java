@@ -9,8 +9,8 @@ public class Prey extends Animal {
   int meatAmount;
 
   // constructor (using super for shorthand)
-  public Prey(int a, int e, int s, int m) {
-    super(a, e, s);
+  public Prey(int a, int h, int s, int m) {
+    super(a, h, s);
     meatAmount = m;
   }
   
@@ -30,9 +30,9 @@ public class Prey extends Animal {
   // the mechanism behind the genetic algorithm of the game
   public Prey breed(Prey other) {
     int newAttack = breedStat(attack, other.getAttack());
-    int newEnergy = breedStat(energy, other.getEnergy());
+    int newHealth = breedStat(health, other.getHealth());
     int newSpeed = breedStat(speed, other.getSpeed());
     int newMeatAmt = breedStat(meatAmount, other.getMeatAmount());
-    return new Prey(newAttack, newEnergy, newSpeed, newMeatAmt);
+    return new Prey(newAttack, newHealth, newSpeed, newMeatAmt);
   }
 }

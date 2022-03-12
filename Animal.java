@@ -1,13 +1,13 @@
 public class Animal {
   // instance data
   int attack;
-  int energy;
+  int health;
   int speed;
 
   // constructor
-  public Animal(int a, int e, int s) {
+  public Animal(int a, int h, int s) {
     attack = a;
-    energy = e;
+    health = h;
     speed = s;
   }
 
@@ -16,8 +16,8 @@ public class Animal {
     return attack;
   }
 
-  public int getEnergy() {
-    return energy;
+  public int getHealth() {
+    return health;
   }
   public int getSpeed() {
     return speed;
@@ -25,6 +25,6 @@ public class Animal {
 
   // modifier method for losing health
   public void takeDamage (int amt) {
-    energy -= amt;
+    health -= amt;
   }
 }
