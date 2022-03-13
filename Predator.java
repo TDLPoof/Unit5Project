@@ -39,6 +39,10 @@ public class Predator extends Animal {
   public int getHuntsLeft() {
     return huntsLeft;
   }
+
+  public int getDaysAlive() {
+    return daysAlive;
+  }
   
   // modifier method for meat eaten today
   // also returns true to make sure that the operation completed
@@ -94,7 +98,15 @@ public class Predator extends Animal {
     health += target.getMeatAmount() / 2;
     System.out.print("Meat quota: ");
     System.out.println("" + meatEatenToday + " / " + meatQuota);
-    System.out.println("Energy: " + health + " / " + maxHealth);
+    System.out.println("Health: " + health + " / " + maxHealth);
     System.out.println();
- }
+  }
+
+  public String toString() {
+    String s = "Health: " + health + " / " + maxHealth + "\n";
+    s += "Meat Quota: " + meatEatenToday + " / " + meatQuota + "\n";
+    s += "Attack: " + attack + "\n";
+    s += "Speed: " + speed + "\n";
+    return s;
+  }
 }
